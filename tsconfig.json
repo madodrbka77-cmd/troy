@@ -1,0 +1,106 @@
+{
+  "compilerOptions": {
+    /* ---------------------------------------------------------------------- */
+    /* 1. Base Configuration & Environment (Hardened)                         */
+    /* ---------------------------------------------------------------------- */
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+    /* ---------------------------------------------------------------------- */
+    /* 2. Strict Type-Checking (Paranoid Mode)                                */
+    /* ---------------------------------------------------------------------- */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "useUnknownInCatchVariables": true,
+    /* ---------------------------------------------------------------------- */
+    /* 3. Hybrid Code Safety (JS/TS Interop)                                  */
+    /* ---------------------------------------------------------------------- */
+    "allowJs": true,
+    "checkJs": true,
+    "maxNodeModuleJsDepth": 0,
+    /* ---------------------------------------------------------------------- */
+    /* 4. Build Performance & Emit                                            */
+    /* ---------------------------------------------------------------------- */
+    "noEmit": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "removeComments": true,
+    /* ---------------------------------------------------------------------- */
+    /* 5. Interop & Module Resolution                                         */
+    /* ---------------------------------------------------------------------- */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "moduleDetection": "force",
+    /* ---------------------------------------------------------------------- */
+    /* 6. Path Aliases (Synced with vite.config.ts)                           */
+    /* ---------------------------------------------------------------------- */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ]
+    },
+    /* ---------------------------------------------------------------------- */
+    /* 7. Type Definitions                                                    */
+    /* ---------------------------------------------------------------------- */
+    "types": [
+      "node",
+      "vite/client",
+      "vitest/globals"
+    ],
+    /* ---------------------------------------------------------------------- */
+    /* 8. Bundler Specifics                                                   */
+    /* ---------------------------------------------------------------------- */
+    "allowImportingTsExtensions": true
+  },
+  /* ---------------------------------------------------------------------- */
+  /* Scope Definition                                                       */
+  /* ---------------------------------------------------------------------- */
+  "include": [
+    "src/**/*",
+    "vite.config.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ]
+}

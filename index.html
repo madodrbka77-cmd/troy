@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="description" content="Tourloop - Enterprise Real-time Tour Management System" />
+    <meta name="theme-color" content="#065F46" />
+    
+    <!-- 
+      SECURITY: Content Security Policy (CSP)
+      Configured to allow Vite HMR (Hot Module Replacement) via 'unsafe-eval'/'unsafe-inline' and WebSocket connections.
+      In production, strict headers from vite.config.ts will supersede or augment this.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob: data: https:; connect-src 'self' ws: wss: http: https:;">
+
+    <title>Tourloop | تورلوب</title>
+
+    <!-- Performance: Preconnect to Font Origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  </head>
+  <body class="bg-[#F0F2F5] dark:bg-gray-900 transition-colors duration-300 font-sans">
+    <!-- Accessibility & Fallback -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; color: #DC2626; font-family: 'Cairo', sans-serif; direction: rtl;">
+        <strong>عذراً!</strong> يتطلب هذا التطبيق تفعيل JavaScript للعمل بشكل صحيح.
+      </div>
+    </noscript>
+    
+    <!-- React Application Mount Point -->
+    <div id="root"></div>
+
+    <!-- 
+      APPLICATION ENTRY POINT
+      FIX: Changed './src/index.tsx' to '/src/index.tsx'.
+      Vite requires an absolute path from the project root for entry scripts in index.html to resolve correctly during build steps.
+    -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

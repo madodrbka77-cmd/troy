@@ -1,0 +1,9 @@
+{
+  "name": "Tourloop",
+  "description": "A fully functional Enterprise-grade social media application prototype featuring a real-time news feed, GenAI-assisted post creation, live video/audio interaction, secure messaging, comments, likes, and a responsive Facebook-like interface.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "clipboard-write"
+  ]
+}
