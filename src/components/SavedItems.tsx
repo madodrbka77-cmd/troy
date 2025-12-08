@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Bookmark, Trash2, Play, X, ChevronRight, ChevronLeft, MoreHorizontal, MessageCircle, ThumbsUp, Share2, Send, Smile, Globe, BookmarkMinus, Image as ImageIcon } from 'lucide-react';
 import DOMPurify from 'dompurify';
-import { Photo, VideoItem, User } from '../types';
+import type { Photo, VideoItem, User } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
 interface SavedItemsProps {

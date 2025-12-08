@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import {
   Users, Bookmark, Calendar, Clock, ChevronDown,
-  MonitorPlay, Store, LayoutGrid, ChevronUp, LucideIcon
+  MonitorPlay, Store, LayoutGrid, ChevronUp, type LucideIcon
 } from 'lucide-react';
-import { User, View } from '../types';
+import type { User, View } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
 interface SidebarProps {

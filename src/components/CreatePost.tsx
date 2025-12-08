@@ -15,7 +15,7 @@ import {
   Send
 } from 'lucide-react';
 import DOMPurify from 'dompurify';
-import { User } from '../types';
+import type { User } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { generatePostContent } from '../services/geminiService';
 

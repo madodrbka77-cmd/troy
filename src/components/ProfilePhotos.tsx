@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Plus, MoreHorizontal, Image as ImageIcon, Pen, X, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Upload, ThumbsUp, MessageCircle, Share2, Send, Smile, Globe, Download, UserCircle, Trash2, Bell, Bookmark, Lock, Users, UserPlus, BellOff, BookmarkMinus, AtSign, ChevronDown, AlertCircle, Loader2 } from 'lucide-react';
 import DOMPurify from 'dompurify';
-import { User, Photo, Album } from '../types';
+import type { User, Photo, Album } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
 // --- Constants for Security & Validation ---

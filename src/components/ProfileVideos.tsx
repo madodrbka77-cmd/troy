@@ -427,7 +427,8 @@ const ProfileVideos: React.FC<ProfileVideosProps> = ({
                   await document.exitPictureInPicture();
               } else {
                   await videoPlayerRef.current.requestPictureInPicture();
-              }ধন} catch (error) {
+              }
+          } catch (error) {
               console.error("PiP failed", error);
           }
       }

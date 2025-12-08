@@ -6,16 +6,9 @@ import checker from 'vite-plugin-checker';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// --- Configuration Constants ---
-// robust definition of __dirname for ESM modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/**
- * Generates robust Content Security Policy (CSP) and security headers.
- * Production: strict
- * Development: disabled (fixes Rollup resolve errors)
- */
 const getSecurityHeaders = (isProduction: boolean) => {
   const baseDirectives = [
     "default-src 'self'",
@@ -50,18 +43,10 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
   const isProd = mode === 'production';
 
-  const requiredEnvVars = ['VITE_API_URL'];
-  const missingVars = requiredEnvVars.filter((key) => !env[key]);
-
-  if (isProd && missingVars.length > 0) {
-    console.error(`🚨 FATAL: Missing required environment variables for production: ${missingVars.join(', ')}`);
-  }
-
-  const PORT = Number(env.VITE_PORT) || 3000;
+  const PORT = Number(env.VITE_PORT) || 5000;
   const PREVIEW_PORT = Number(env.VITE_PREVIEW_PORT) || 8080;
 
   return {
-    // 1. Explicit Root Definition
     root: __dirname,
     base: '/',
 
@@ -100,10 +85,8 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: {
-        // FIX 100%: حذف الخط المسبب للمشكلة + إضافة alias الصحيح
         '@': path.resolve(__dirname, 'src'),
-        '/src': path.resolve(__dirname, 'src'),  // <-- شغال على ويندوز الآن
-
+        '/src': path.resolve(__dirname, 'src'),
         '@components': path.resolve(__dirname, 'src/components'),
         '@utils': path.resolve(__dirname, 'src/utils'),
         '@assets': path.resolve(__dirname, 'src/assets'),
@@ -116,18 +99,23 @@ export default defineConfig(({ mode }) => {
 
     server: {
       port: PORT,
-      strictPort: true,
-      host: true,
+      strictPort: false,
+      host: '0.0.0.0',
+      allowedHosts: true,
       cors: false,
-      headers: {},
-      proxy: {
-        '/api': {
-          target: env.VITE_API_URL,
-          changeOrigin: true,
-          secure: isProd,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
+      ...(env.VITE_API_URL ? {
+        proxy: {
+          '/api': {
+            target: env.VITE_API_URL,
+            changeOrigin: true,
+            secure: isProd,
+            rewrite: (path) => path.replace(/^\/api/, ''),
+          },
+        }
+      } : {}),
     },
 
     preview: {

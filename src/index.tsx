@@ -5,7 +5,7 @@
  * @author Al-Muhandis
  */
 
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, { type ErrorInfo, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 // -----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBound
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // SECURITY/LOGGING: In production, send this to Sentry/Datadog
     console.error('CRITICAL UI ERROR:', error, errorInfo);
 
@@ -55,7 +55,7 @@ class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBound
     }
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-4 text-center dark:bg-gray-900 font-sans" dir="rtl">

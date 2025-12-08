@@ -7,7 +7,7 @@ import Profile from './components/Profile';
 import ChatWindow from './components/ChatWindow';
 import SavedItems from './components/SavedItems';
 import Watch from './components/Watch';
-import { User, View, Story, Photo, Album, VideoItem, Post } from './types';
+import type { User, View, Story, Photo, Album, VideoItem, Post } from './types';
 import { Check, Info, X, Play, Pause, ChevronRight, ChevronLeft, Heart, Smile, Send } from 'lucide-react';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -232,7 +232,7 @@ const AppContent: React.FC = () => {
       id: Date.now().toString(),
       author: currentUser,
       content: safeContent,
-      image,
+      ...(image ? { image } : {}),
       timestamp: 'الآن',
       likes: 0,
       comments: [],
@@ -471,6 +471,23 @@ const AppContent: React.FC = () => {
     }
   }, [savedPhotos, handleToggleSaveVideo, showNotification]);
 
+  const handleToggleSavePost = useCallback((post: Post) => {
+    if (post.image) {
+      const isVideo = post.image.startsWith('data:video');
+      if (isVideo) {
+        const video = userVideos.find(v => v.url === post.image);
+        if (video) {
+          handleToggleSaveVideo(video);
+        }
+      } else {
+        const photo = yourPhotos.find(p => p.url === post.image);
+        if (photo) {
+          handleToggleSave(photo);
+        }
+      }
+    }
+  }, [userVideos, yourPhotos, handleToggleSave, handleToggleSaveVideo]);
+
   const handleProfileClick = useCallback(() => {
     setViewingProfile(currentUser);
     setView('profile');
@@ -524,7 +541,7 @@ const AppContent: React.FC = () => {
             onPostCreate={handleCreatePost}
             onTogglePin={handleTogglePinPost}
             onDeletePost={handleDeletePost}
-            onToggleSave={handleToggleSave}
+            onToggleSave={handleToggleSavePost}
           />
         );
       case 'watch':
@@ -608,7 +625,7 @@ const AppContent: React.FC = () => {
     }
   }, [
     currentView, currentUser, stories, posts, savedPhotos, savedVideos, yourPhotos, albums, userVideos, viewingProfile,
-    handleAddStory, handleCreatePost, handleTogglePinPost, handleDeletePost, handleToggleSave, handleFriendClick,
+    handleAddStory, handleCreatePost, handleTogglePinPost, handleDeletePost, handleToggleSave, handleToggleSavePost, handleFriendClick,
     handleOpenChat, handleFriendAction, handleUpdateProfilePhoto, handleUpdateCoverPhoto, handleUpdateName,
     handleViewUserStory, handleAddGenericPhoto, handleCreateAlbum, handleAddPhotoToSpecificAlbum, handleDeletePhoto,
     handleAddVideoDirectly, handleDeleteVideo, handleToggleSaveVideo, setView

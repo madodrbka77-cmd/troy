@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
-import { Search, X, Check, Loader2, AlertCircle } from 'lucide-react';
+import { Search, X, Check, Loader2, AlertCircle, Plus } from 'lucide-react';
 import DOMPurify from 'dompurify';
-import { Photo as GlobalPhoto, User as GlobalUser } from '../types';
+import type { Photo as GlobalPhoto, User as GlobalUser } from '../types';
 
 // --- Extended Types Definition ---
 

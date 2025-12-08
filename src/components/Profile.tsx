@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Camera, Pen, Plus, MessageCircle, UserCheck, ChevronDown, UserMinus, Ban, UserPlus, Clock, LayoutGrid, Flag, Calendar, X, AlertCircle, Lock, CheckCircle, ThumbsUp, Share2, Send, Smile, Globe, Bookmark, BookmarkMinus, Bell, BellOff, Download, Trash2, MoreHorizontal, ChevronRight, ChevronLeft, PlayCircle, Image as ImageIcon, Play, Pause, Heart, Loader2 } from 'lucide-react';
-import { User, Post, TabType, Photo, Album, VideoItem, Story } from '../types';
+import type { User, Post, TabType, Photo, Album, VideoItem, Story } from '../types';
 import CreatePost from './CreatePost';
 import PostCard from './PostCard';
 import ProfileAbout from './ProfileAbout';

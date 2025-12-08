@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Briefcase, GraduationCap, MapPin, Heart, Phone, Info, Clock, Globe, Plus, Save, X, Trash2, Users, Lock, ChevronDown, Home, Mail, Link as LinkIcon, Calendar, User as UserIcon, Languages, Mic, Quote, Droplet, PenLine, Star, Pen, Facebook, Instagram, Twitter, Linkedin, Youtube, Github, MessageCircle, Twitch } from 'lucide-react';
-import { User } from '../types';
+import type { User } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
 interface ProfileAboutProps {

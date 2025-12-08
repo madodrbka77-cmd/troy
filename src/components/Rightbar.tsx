@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Video, Search, MoreHorizontal, AlertCircle, User as UserIcon } from 'lucide-react';
-import { User } from '../types';
+import type { User } from '../types';
 
 // --- 1. Types Definition ---
 // Security: Using the project's global User type ensures consistency across App, Chat, and Sidebar.

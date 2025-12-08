@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
-import { View } from "../types";
+import type { View } from "../types";
 
 // --- 1. Types & Interfaces ---
 interface NavbarProps {
